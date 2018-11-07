@@ -12,6 +12,9 @@ module.exports = {
     })
   ],
   devtool: 'sourcemap',
+  performance: {
+    hints: false
+  },
   module: {
     rules: [
       {
