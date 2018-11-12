@@ -2,6 +2,66 @@ body {
   font-family: Helvetica;
 }
 .app {
-  margin-top: 20px;
-  margin-bottom: 20px;
+
+  display: flex
 }
+.messaging {
+  width: 60%;
+  height: 100vh;
+  padding: 0px 15px;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+#message-list {
+  height: 75%;
+  overflow: scroll;
+  // display: flex;
+  // flex-direction: column-reverse;
+}
+.message-list-title {
+  height: 10%;
+  border-bottom: 1px solid rgb(80, 80, 80);
+
+}
+.message-list-section {
+
+}
+.message-form-section {
+  height: 15%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-top: 1px solid rgb(80, 80, 80);
+
+
+}
+.message-input {
+  width: 480px;
+  height: 35px;
+  border: 1px solid rgba(0,0,0,0.7);
+  border-radius: 4px 0px 0px 4px;
+  padding-left: 10px;
+  font-size: 15px;
+}
+.message-button {
+  margin-bottom: 3px;
+  height: 35px;
+  background-color: black;
+  color: white;
+  border-radius: 0px 4px 4px 0px;
+
+}
+.btn:focus {
+  outline: none;
+  color: white;
+}
+
+
+
+
+@import "message";
