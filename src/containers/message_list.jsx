@@ -24,9 +24,6 @@ class MessageList extends Component {
   render() {
 
     let list_messages = "No Messages!"
-    console.log(this.props.messages)
-    console.log(this.props.messages.length)
-
 
     if (this.props.messages.length > 0) {
       list_messages = this.props.messages.map((message) => <Message message={message} key={message.id}/>)
@@ -36,7 +33,7 @@ class MessageList extends Component {
     return (
       <div className="messaging">
         <div className="message-list-title">
-          <h1><strong>Channel</strong></h1>
+          <h3><strong>Channel</strong> - {this.props.channel} </h3>
         </div>
         <div id="message-list" ref={(list) => { this.list = list; }}>
           { list_messages }

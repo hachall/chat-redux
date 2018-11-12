@@ -16,12 +16,14 @@ import channelsReducer from './reducers/channels_reducer.js';
 import currentUserReducer from './reducers/current_user_reducer.js';
 import selectedChannelReducer from './reducers/selected_channel_reducer.js';
 
+const identityReducer = (state = null) => state;
+
 
 // State and reducers
 const reducers = combineReducers({
   messages: messagesReducer,
-  channels: channelsReducer,
-  currentUser: currentUserReducer,
+  channels: identityReducer,
+  currentUser: identityReducer,
   selectedChannel: selectedChannelReducer
 });
 
@@ -41,7 +43,7 @@ const initial_messages = [
 
 const initialState = {
   messages: initial_messages,
-  channels: [ 'general', 'react', 'paris' ],
+  channels: [ 'general', 'react', 'london' ],
   currentUser: prompt("What is your username?") || `anonymous${Math.floor(10 + (Math.random() * 90))}`,
   selectedChannel: 'general'
 };

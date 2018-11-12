@@ -14,6 +14,10 @@ class MessageForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.messageBox.focus();
+  }
+
   handleChange(event) {
     this.setState({value: event.target.value});
   }
@@ -21,7 +25,6 @@ class MessageForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     // post message
-    console.log(this.state.value)
     this.props.createMessage(this.props.channel, this.props.author, this.state.value)
     this.setState({
       value: ''
@@ -33,7 +36,7 @@ class MessageForm extends Component {
     return (
       <div className="message-form-section" onSubmit={this.handleSubmit}>
         <form className="form-inline">
-          <input className="message-input" type="text" value={this.state.value} onChange={this.handleChange} />
+          <input className="message-input" type="text" value={this.state.value} onChange={this.handleChange} ref={(input) => { this.messageBox = input }}/>
           <input className="message-button btn" type="submit" value="Send"/>
         </form>
       </div>
