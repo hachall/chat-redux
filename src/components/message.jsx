@@ -30,7 +30,7 @@ class Message extends Component {
     const time = (this.props.message.created_at).substr(11,5)
     // const time = "11:11"
     const ran = (this.props.message.created_at).substr(18,1)
-    const pic = `https://loremflickr.com/300/300/boy?random=${ran}`
+    const pic = `https://loremflickr.com/300/300/man?random=${ran}`
     // const pic = `https://loremflickr.com/300/300/boy?random=2`
 
 
