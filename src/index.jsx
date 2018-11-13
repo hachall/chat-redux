@@ -13,8 +13,10 @@ import '../assets/stylesheets/application.scss';
 
 import messagesReducer from './reducers/messages_reducer.js';
 import channelsReducer from './reducers/channels_reducer.js';
-import currentUserReducer from './reducers/current_user_reducer.js';
+// import currentUserReducer from './reducers/current_user_reducer.js';
 import selectedChannelReducer from './reducers/selected_channel_reducer.js';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { createHistory as history } from 'history';
 
 const identityReducer = (state = null) => state;
 
@@ -24,7 +26,7 @@ const reducers = combineReducers({
   messages: messagesReducer,
   channels: identityReducer,
   currentUser: identityReducer,
-  selectedChannel: selectedChannelReducer
+  // selectedChannel: selectedChannelReducer
 });
 
 
@@ -44,9 +46,10 @@ const initial_messages = [
 const initialState = {
   messages: initial_messages,
   channels: [ 'general', 'react', 'london' ],
-  currentUser: prompt("What is your username?") || `anonymous${Math.floor(10 + (Math.random() * 90))}`,
-  selectedChannel: 'general'
+  currentUser: `anonymous${Math.floor(10 + (Math.random() * 90))}`,
+  // selectedChannel: 'general'
 };
+// prompt("What is your username?")
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middlewares = composeEnhancers(applyMiddleware(logger, reduxPromise));
@@ -54,7 +57,12 @@ const middlewares = composeEnhancers(applyMiddleware(logger, reduxPromise));
 // render an instance of the component in the DOM
 ReactDOM.render(
   <Provider store={createStore(reducers, initialState, middlewares)}>
-    <App />
+    <Router history={history}>
+      <Switch>
+        <Route path="/:channel" component={App} />
+        <Redirect from="/" to="/general" />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
