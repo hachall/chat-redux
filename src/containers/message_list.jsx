@@ -12,7 +12,7 @@ class MessageList extends Component {
   componentWillMount() {
     // get messages. Use fetchMessages
 
-    this.props.fetchMessages(this.props.channel);
+    this.props.fetchMessages(this.props.channelFromParams);
   }
 
 
@@ -33,12 +33,12 @@ class MessageList extends Component {
     return (
       <div className="messaging">
         <div className="message-list-title">
-          <h3><strong>Channel</strong> - {this.props.channel} </h3>
+          <h3><strong>Channel</strong> - {this.props.channelFromParams} </h3>
         </div>
         <div id="message-list" ref={(list) => { this.list = list; }}>
           { list_messages }
         </div>
-        <MessageForm />
+        <MessageForm channelFromParams={this.props.channelFromParams}/>
       </div>
 
     )
@@ -54,8 +54,8 @@ function matchDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages,
-    channel: state.selectedChannel
+    messages: state.messages
+    // channel: state.selectedChannel
   }
 }
 
